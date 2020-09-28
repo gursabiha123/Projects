@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	function validate(){
+		
+		var v1=document.getElementById("n1").value;
+		var v2=document.getElementById("n2").value;
+		var v3=document.getElementById("n3").value;
+		var v4=document.getElementById("n4").value;
+		
+	}
+	function generateCaptcha(){
+		var v=parseInt((Math.random())*10000);
+		document.getElementById("result1").innerHTML="<input type=text disabled id=nb value="+v+"> <input type=button value=refresh class=button onClick=generateCaptcha()><br> enter above no<input type=text id=cc1><input type=button value=validate class=button onclick=captchavalidate()>";
+		
+	}
+	function captchavalidate(){
+		var v1=document.getElementById("nb").value;
+		var v2=document.getElementById("cc1").value;
+		if(v1==v2){
+			document.getElementById("bb").disabled=false;
+			
+			
+		}}
+	function messg()
+	{
+		document.getElementById("bb").disabled=false;
+	}
+</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>	
+		<script>
+		function fc(){
+		var strength = {
+		        0: "Worst ",
+		        1: "Bad ",
+		        2: "Weak ",
+		        3: "Good ",
+		        4: "Strong "
+		}
+
+		var password = document.getElementById('password');
+		var meter = document.getElementById('password-strength-meter');
+		var text = document.getElementById('password-strength-text');
+
+		document.getElementById("password").addEventListener('input', function()
+		{
+		    var val = password.value;
+		    var result = zxcvbn(val);
+		    
+		    // Update the password strength meter
+		    meter.value = result.score;
+		   
+		    // Update the text indicator
+		    if(val !== "") {
+		        text.innerHTML = "Strength: " + "<strong>" + strength[result.score] + "</strong>" + "<span class='feedback'>" + result.feedback.warning + " " + result.feedback.suggestions + "</span"; 
+		    }
+		    else {
+		        text.innerHTML = "";
+		    }
+		});
+		}
+</script>
+<script>
+		var stateObject = {
+				"India": { "Delhi": ["new Delhi", "North Delhi"],
+				"Kerala": ["Thiruvananthapuram", "Palakkad"],
+				"Goa": ["North Goa", "South Goa"],
+				},
+				"Australia": {
+				"South Australia": ["Dunstan", "Mitchell"],
+				"Victoria": ["Altona", "Euroa"]
+				}, "Canada": {
+				"Alberta": ["Acadia", "Bighorn"],
+				"Columbia": ["Washington", ""]
+				},
+				}
+				window.onload = function () {
+				var countySel = document.getElementById("countySel"),
+				stateSel = document.getElementById("stateSel"),
+				districtSel = document.getElementById("districtSel");
+				for (var country in stateObject) {
+				countySel.options[countySel.options.length] = new Option(country, country);
+				}
+				countySel.onchange = function () {
+				stateSel.length = 1; // remove all options bar first
+				districtSel.length = 1; // remove all options bar first
+				if (this.selectedIndex < 1) return; // done
+				for (var state in stateObject[this.value]) {
+				stateSel.options[stateSel.options.length] = new Option(state, state);
+				}
+				}
+				countySel.onchange(); // reset in case page is reloaded
+				stateSel.onchange = function () {
+				districtSel.length = 1; // remove all options bar first
+				if (this.selectedIndex < 1) return; // done
+				var district = stateObject[countySel.value][this.value];
+				for (var i = 0; i < district.length; i++) {
+				districtSel.options[districtSel.options.length] = new Option(district[i], district[i]);
+				}
+				}
+				}
+		</script>
+</head>
+<body>
+
+	<p align="center">Registration Page</p>
+	<center>
+	<form action="RegistrationServlet" method="">
+		Name : <input type=text name="nn" id="n1" class="nn" required pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$"> <br><br>
+		<section>
+		Password : <input type="password" name="password" id="password" class="password" oninput="fc()"required minlength="4" maxlength="18"> <br> <br>
+		<meter max="4" id="password-strength-meter"></meter>
+		<p id="password-strength-text"></p></section>
+		
+		Email : <input type=email name="email" id="n3" class="email" required> <br> <br>
+		Phone no: <input type="tel" name="phone" id="ph" class="pn" pattern="^[1-9]{10}" required ><br><br><!-- length 11, onblur will avoid editing -->
+		Address : <input type=text name="address" id="n4" class="n" required  onBlur="generateCaptcha()"> <br> <br>
+		
+		
+		
+
+Select Country: <select name="state" id="countySel" size="1">
+<option value="" selected="selected">Select Country</option>
+</select>
+<br>
+<br>
+Select State: <select name="countrya" id="stateSel" class="countrya" size="1">
+<option value="" selected="selected">Please select Country first</option>
+</select>
+<br>
+<br>
+Select District: <select name="district" id="districtSel" size="1">
+<option value="" selected="selected">Please select State first</option>
+</select><br><br>
+<div id="result1"></div>
+<input type="submit" value="Captcha correct proceed" id="bb" onclick="messg()" disabled> <br><br>
+
+<input type="submit" id="btton button5" onclick="validate()" class="bttn button5">
+</form>
+	</center>
+</body>
+</html>
