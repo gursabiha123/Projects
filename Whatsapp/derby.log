@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Thu Sep 17 18:32:05 IST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0174-9c28-5f66-0000033f3128 
+on database directory F:\myfirstdb with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+Loaded from file:/F:/db-derby-10.13.1.1-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_201-b09
+user.dir=C:\Users\S D SINGH\Documents\workspace-spring-tool-suite-4-4.7.2.RELEASE\Whatsapp
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
